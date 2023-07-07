@@ -1,0 +1,39 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: "quinoa-wind-turbine-demo"
+  annotations:
+    argocd/app-name: quinoa-wind-turbine-demo-dev
+    backstage.io/kubernetes-id: quinoa-wind-turbine-demo
+    backstage.io/kubernetes-namespace: quinoa-wind-turbine-demo-dev
+    janus-idp.io/tekton-enabled : 'true'
+    github.com/project-slug: rosa916-rvhvd/quinoa-wind-turbine-demo
+    quay.io/repository-slug: "/quinoa-wind-turbine-demo"
+    backstage.io/techdocs-ref: dir:.
+  tags:
+    - java
+    - quarkus
+  links:
+    - url: https://devspaces.apps.cluster-xxxxx.xxxxx.sandbox123.opentlc.com/#https://github.com/rosa916-rvhvd/quinoa-wind-turbine-demo?che-editor=che-incubator/che-code/insiders&devfilePath=.devfile-vscode.yaml
+      title: OpenShift Dev Spaces (VS Code)
+      icon: web
+    - url: https://devspaces.apps.cluster-xxxxx.xxxxx.sandbox123.opentlc.com/#https://github.com/rosa916-rvhvd/quinoa-wind-turbine-demo?che-editor=che-incubator/che-idea/latest&devfilePath=.devfile-intellij.yaml
+      title: OpenShift Dev Spaces (JetBrains IntelliJ)
+      icon: web
+spec:
+  type: service
+  lifecycle: production
+  owner: "user:default/blues-man"
+  providesApis:
+    - "quinoa-wind-turbine-demo"
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: "quinoa-wind-turbine-demo"
+spec:
+  type: openapi
+  lifecycle: production
+  owner: "user:default/blues-man"
+  definition:
+    $text: ./openapi.yaml
